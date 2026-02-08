@@ -1,3 +1,5 @@
+import Footer from "./components/common/Footer";
+import Header from "./components/common/Header";
 
 
 
@@ -7,7 +9,9 @@
 const App=()=>{
   return(
     <>
-     <h1>Hello crypto</h1>
+     
+     <Header/>
+     <Footer/>
     </>
   )
 }
