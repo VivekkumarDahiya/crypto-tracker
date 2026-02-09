@@ -18,7 +18,7 @@ body{
     background-color: var(--black);
     color: var(--white);
     font-family: "Inter", sans-serif;
-    height: 200vh;
+   
 }
 
 ::selection{
@@ -41,6 +41,11 @@ body{
   background: var(--blue);
   border-radius: 0.3rem;
   
+}
+
+.navlink{
+    color: var(--white) !important;
+    text-decoration: none !important;
 }
 
 
