@@ -1,4 +1,5 @@
 
+import Button from "../../button";
 import SwipeableTemporaryDrawer from "./drawer";
 import "./style.css"
 
@@ -20,7 +21,9 @@ const Header=()=>{
             <p className="link">Watchlist</p>
            </a >
            <a href="/" className="navlink">
-            <p className="link">Dashboard</p>
+            <Button 
+            text={"Dashboard"}
+            onClick={()=>console.log("btn click")}/>
            </a>
            </nav>
            <div className="mobile-drawer">

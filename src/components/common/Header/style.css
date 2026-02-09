@@ -42,6 +42,10 @@
   }
   .mobile-drawer{
     display: block;
+   
+  }
+   .links {
+    display: none;   
   }
   .menu{
     width: 40vh;
@@ -49,6 +53,7 @@
     height: 100vh;
     padding: 1.5rem;
   }
+  
 }
 /* hamburber menu */
 .barlink{
