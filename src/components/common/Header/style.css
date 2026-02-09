@@ -7,7 +7,7 @@
     top: 0;
     left: 0;
     background-color: var(--black);
-    z-index: 100;
+    
 }
 .logo{
     font-size: 1.5rem;
@@ -27,4 +27,44 @@
     color: var(--white);
     transition: all 0.3s;
 }
+
+.mobile-drawer{
+    display: none;
+}
+
+@media only screen and (max-width: 800px) {
+  .link{
+    display: none;
+  }
+  .logo{
+    font-size: 1rem;
+    transition: all 0.3s;
+  }
+  .mobile-drawer{
+    display: block;
+  }
+  .menu{
+    width: 40vh;
+    background-color: var(--black);
+    height: 100vh;
+    padding: 1.5rem;
+  }
+}
+/* hamburber menu */
+.barlink{
+    color: var(--grey);
+    font-weight: 800;
+   
+   
+}
+.barlink:hover{
+    color: var(--white);
+    transition: all 0.3s;
+}
+
+.sidebar{
+    text-decoration: none;
+}
+
+
 

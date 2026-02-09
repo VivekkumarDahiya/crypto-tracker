@@ -45,7 +45,10 @@ body{
 
 .navlink{
     color: var(--white) !important;
-    text-decoration: none !important;
+    text-decoration: none ;
+}
+.menu{
+   text-decoration: none !important;
 }
 
 

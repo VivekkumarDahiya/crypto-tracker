@@ -1,3 +1,5 @@
+
+import SwipeableTemporaryDrawer from "./drawer";
 import "./style.css"
 
 
@@ -6,7 +8,7 @@ const Header=()=>{
         <header className="header">
 
            <h1  className="logo">CryptoTracker<span style={{color:"var(--blue)"}}>.</span></h1>
-           
+
            <nav  className="links">
            <a href="/" className="navlink">
             <p className="link">Home</p>
@@ -21,6 +23,9 @@ const Header=()=>{
             <p className="link">Dashboard</p>
            </a>
            </nav>
+           <div className="mobile-drawer">
+            <SwipeableTemporaryDrawer/>
+           </div>
         </header>
     )
 }
