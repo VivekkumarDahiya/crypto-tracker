@@ -23,6 +23,7 @@ const Header=()=>{
            <a href="/" className="navlink">
             <Button 
             text={"Dashboard"}
+            outlined={true}
             onClick={()=>console.log("btn click")}/>
            </a>
            </nav>
