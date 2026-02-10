@@ -1,20 +1,21 @@
-import Footer from "./components/common/Footer";
-import Header from "./components/common/Header";
-import MainComponent from "./components/landingPage/maincomponent";
-
-
+import {BrowserRouter, Routes, Route} from "react-router";
+import HomePage from "./pages/home";
+import "./App.css";
+import Dashboard from "./pages/dashboard";
 
 
 
 
 const App=()=>{
   return(
-    <>
-     
-     <Header/>
-     <MainComponent/>
-   
-    </>
+    <div className="App">
+      <BrowserRouter>
+      <Routes>
+       <Route path="/home" element={<HomePage/>}/>
+       <Route path="/dashboard" element={<Dashboard/>}/>
+      </Routes>
+      </BrowserRouter>
+    </div>
   )
 }
 

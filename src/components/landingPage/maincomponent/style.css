@@ -129,7 +129,7 @@
     position: absolute;
     width: 220px;
     min-width: unset;
-    left: 50%;
+    left: 20%;
     top: 0;
     transform: translateX(-50%);
   }

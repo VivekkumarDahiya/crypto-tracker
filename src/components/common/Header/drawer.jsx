@@ -1,9 +1,9 @@
 
 import { useState } from 'react';
 import SwipeableDrawer from '@mui/material/SwipeableDrawer';
-import Button from '@mui/material/Button';
 import MenuRoundedIcon from '@mui/icons-material/MenuRounded';
 import IconButton from '@mui/material/IconButton';
+import { Link } from 'react-router';
 
 export default function SwipeableTemporaryDrawer() {
    const [open,setOpen]=useState(false)
@@ -15,18 +15,18 @@ export default function SwipeableTemporaryDrawer() {
             </IconButton>
           <SwipeableDrawer anchor={'right'} open={open} onClose={()=>setOpen(false)}  >
          <div className='menu'>
-            <a href="/" className="sidebar">
+            <Link to="/home" className="sidebar">
             <p className="barlink">Home</p>
-           </a>
-           <a href="/" className="sidebar">
+           </Link>
+           <Link to="/compare" className="sidebar">
             <p className="barlink">Compare</p>
-           </a>
-           <a href="/" className="sidebar">
+           </Link>
+           <Link to="/watchlist" className="sidebar">
             <p className="barlink">Watchlist</p>
-           </a >
-           <a href="/" className="sidebar">
+           </Link >
+           <Link to="/dashboard" className="sidebar">
             <p className="barlink">Dashboard</p>
-           </a>
+           </Link>
          </div>
           </SwipeableDrawer >
 
