@@ -1,5 +1,7 @@
 import "./style.css";
 import Button from "../../button";
+import phone from  "../../../assets/phone.png"
+import gradient from  "../../../assets/gradient.png"
 
 
 
@@ -15,7 +17,10 @@ const MainComponent=()=>{
                     <Button  text={"Share"}  outlined={true}/>
                 </div>
              </div>
-             <div className="">phone</div>
+             <div className="phone-container">
+                <img src={phone}  className="phone-imge"/>
+                <img src={gradient} className="gradient-img"/>
+             </div>
         </div>
     )
 }
