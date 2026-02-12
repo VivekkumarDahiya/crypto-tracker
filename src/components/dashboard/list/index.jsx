@@ -2,7 +2,7 @@ import "./style.css"
 import TrendingUpRoundedIcon from '@mui/icons-material/TrendingUpRounded';
 import TrendingDownRoundedIcon from '@mui/icons-material/TrendingDownRounded';
 import Tooltip from "@mui/material/Tooltip";
-import ConverNumber from "../../../functions/converNumber";
+import { ConvertNumber } from "../../../functions/converNumber";
 
 
 const List=({coin})=>{
@@ -60,11 +60,13 @@ const List=({coin})=>{
          </Tooltip>
           <Tooltip  title="Market Cap"  placement="bottom-end">
           <td className="mobile-td-mkt">
-          <p className="total_volume td-right-align" id="total-volume-cap"> 
-            ${ConverNumber(coin.market_cap)}
+          <p className="total_volume td-right-align"> 
+          ${ConvertNumber(coin?.market_cap ?? 0)}
             </p>
          </td>
          </Tooltip>
+   
+
         
         </tr>
     )

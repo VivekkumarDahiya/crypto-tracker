@@ -1,9 +1,9 @@
 
 
 
-const ConverNumber=(number)=>{
+export const ConvertNumber=(number)=>{
           const numberWithCommas=number.toLocaleString()
-          var arr=numberWithCommas.split(" ")
+          var arr=numberWithCommas.split(",")
      if(arr.length==5){
 // Trilion
    return arr[0]+"." +arr[1].slice(0,2)+"T"
@@ -20,4 +20,3 @@ const ConverNumber=(number)=>{
         return number.toLocaleString();
      }
 }
-export default ConverNumber;
