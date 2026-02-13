@@ -5,17 +5,21 @@ import TabComponents from "../components/dashboard/tabs";
 import axios from "axios";
 import Search from "../components/dashboard/searchBar";
 import PaginationComponent from "../components/dashboard/pagination";
+import Loader from "../components/common/loader";
+import BackToTop from "../components/common/backToTop";
 
 const Dashboard = () => {
   const [search, setSearch] = useState("");
   const [coins, setCoins] = useState([]);
   const [paginatedcoins, setPaginatedCoins] = useState([]);
   const [page, setPage] = useState(1);
+  const [isloading, setIsLoading] = useState(true);
 
   const handlePageChange = (event, value) => {
     setPage(value);
     var previousIndex = (value - 1) * 10;
     setPaginatedCoins(coins.slice(previousIndex, previousIndex + 10));
+    setIsLoading(false)
   };
 
   const onSearchChange = (e) => {
@@ -36,15 +40,22 @@ const Dashboard = () => {
       .then((response) => {
         setCoins(response.data);
         setPaginatedCoins(response.data.slice(0, 10));
+          setIsLoading(false);
       })
       .catch((error) => {
         console.log(error);
+           setIsLoading(false)
       });
   }, []);
 
   return (
-    <div>
-      <Header />
+
+    <>
+    <Header />
+    <BackToTop/>
+  {isloading?(
+    <Loader/>
+  ):( <div>
       <Search search={search} onSearchChange={onSearchChange} />
 
       <TabComponents
@@ -57,7 +68,9 @@ const Dashboard = () => {
           handlePageChange={handlePageChange}
         />
       )}
-    </div>
+    </div>)}
+
+    </> 
   );
 };
 
