@@ -71,3 +71,7 @@ width: 90%;
   padding: 0rem 0.5rem;
   border-radius: 0.8rem;
 }
+
+.grey-wrapper h2,p{
+margin: 1rem 0rem;
+}

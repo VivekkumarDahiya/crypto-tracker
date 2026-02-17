@@ -5,7 +5,7 @@ export const coinObject=(setState,data)=>{
 id:data.id,
 name:data.name,
 image:data.image.large,
-desc:data.description.eng,
+desc:data.description.en,
 price_change_percentage_24h:data.market_data.price_change_percentage_24h,
 total_volume:data.market_data.total_volume.usd,
 current_price:data.market_data.current_price.usd,

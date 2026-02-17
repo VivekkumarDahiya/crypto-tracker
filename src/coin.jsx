@@ -5,6 +5,7 @@ import Loader from "./components/common/loader";
 import axios from "axios";
 import { coinObject } from "./functions/converObject";
 import List from "./components/dashboard/list";
+import CoinInfo from "./components/coin/coinInfo";
 
 
 
@@ -30,15 +31,22 @@ useEffect(()=>{
       });
 },[id])
     return(
-        <div>
-        <Header/>
-        {isloading?<Loader/>:
+     <div>
+      <Header/>
+      {isloading?(
+        <Loader/>
+      ):(
+        <>
         <div className="grey-wrapper">
-            <><List   coin={coinData}/></>  </div>
-       
-        }
+              <List coin={coinData}/>
         </div>
-    )
+        <CoinInfo  
+        heading={coinData.name}  
+        desc={coinData.desc}/>
+        </>
+      )}
+     </div>
+        )
 }
 
 export default Coinpage;
