@@ -10,6 +10,8 @@ import { getCoinData } from "./functions/getCoinData";
 import { getCoinPrices } from "./functions/getCoinPrices";
 import LineChart from "./components/coin/lineChart";
 import { convertDate } from "./functions/convertDate";
+import SelectDays from "./components/coin/SelectDays";
+import { settinChartData } from "./functions/setttingChartData";
 
 
 
@@ -18,7 +20,7 @@ const Coinpage=()=>{
      const {id}=useParams()
      const[isloading,setIsLoading]=useState(true);
      const[coinData,setCoinData]=useState();
-     const [days,setDays]=useState(120);
+     const [days,setDays]=useState(60);
      const[chartData,setChartData]=useState({})
 
 
@@ -70,6 +72,18 @@ if(id){
            setIsLoading(false)
       });
     }
+   
+
+  const handleDaysChange =async (event) => {
+    setIsLoading(true)
+    setDays(event.target.value);
+    const prices=await getCoinPrices(id, (event.target.value))
+      if(prices.length>0){
+        settinChartData(setChartData,prices);
+        setIsLoading(false)
+      }
+  
+  };
 
     return(
      <div>
@@ -78,10 +92,11 @@ if(id){
         <Loader/>
       ):(
         <>
-        <div className="grey-wrapper">
+        <div className="grey-wrapper" style={{padding:"0.5rem 1rem"}}>
 
               <List coin={coinData}/>
         </div><div className="grey-wrapper">
+          <SelectDays  days={days} handleDaysChange={handleDaysChange}/>
           <LineChart   chartData={chartData}/>
         </div>
 
