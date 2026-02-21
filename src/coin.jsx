@@ -6,6 +6,8 @@ import axios from "axios";
 import { coinObject } from "./functions/converObject";
 import List from "./components/dashboard/list";
 import CoinInfo from "./components/coin/coinInfo";
+import { getCoinData } from "./functions/getCoinData";
+import { getCoinPrices } from "./functions/getCoinPrices";
 
 
 
@@ -13,23 +15,41 @@ const Coinpage=()=>{
      
      const {id}=useParams()
      const[isloading,setIsLoading]=useState(true);
-     const[coinData,setCoinData]=useState()
+     const[coinData,setCoinData]=useState();
+     const [days,setDays]=useState(30)
+
 useEffect(()=>{
- axios
-      .get(
-        `https://api.coingecko.com/api/v3/coins/${id}`
-      )
-      .then((response) => {
-        // setCoins(response.data);
-        // setPaginatedCoins(response.data.slice(0, 10));
-        coinObject(setCoinData,response.data)
-        setIsLoading(false);
-      })
-      .catch((error) => {
+if(id){
+
+ getData()
+
+    }
+
+},[id])
+   
+  async   function  getData(){
+
+    const data= await getCoinData(id)
+    if(data){
+      coinObject(setCoinData,data)
+      const prices=await getCoinPrices(id,days)
+      if(prices.length>0){
+        console.log("wohoh")
+        setIsLoading(false)
+      }
+    }
+       axios.get(
+        `https://api.coingecko.com/api/v3/coins/${id}/market_chart?vs_currency=usd&days=${days}&interval=daily`   
+      ).then((response)=>{
+        console.log("Prices>>>>",response.data.prices)
+           setIsLoading(false)
+        
+      }).catch((error) => {
         console.log(error);
            setIsLoading(false)
       });
-},[id])
+    }
+
     return(
      <div>
       <Header/>
