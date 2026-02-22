@@ -12,6 +12,7 @@ import LineChart from "./components/coin/lineChart";
 import { convertDate } from "./functions/convertDate";
 import SelectDays from "./components/coin/SelectDays";
 import { settinChartData } from "./functions/setttingChartData";
+import TogglePriceType from "./components/coin/priceType";
 
 
 
@@ -97,6 +98,7 @@ if(id){
               <List coin={coinData}/>
         </div><div className="grey-wrapper">
           <SelectDays  days={days} handleDaysChange={handleDaysChange}/>
+         <TogglePriceType/>
           <LineChart   chartData={chartData}/>
         </div>
 
