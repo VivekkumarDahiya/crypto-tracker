@@ -23,6 +23,7 @@ const Coinpage=()=>{
      const[coinData,setCoinData]=useState();
      const [days,setDays]=useState(60);
      const[chartData,setChartData]=useState({})
+      const [priceType, setPriceType] = useState('prices');
 
 
 useEffect(()=>{
@@ -39,8 +40,9 @@ if(id){
     const data= await getCoinData(id)
     if(data){
       coinObject(setCoinData,data)
-      const prices=await getCoinPrices(id,days)
+      const prices=await getCoinPrices(id,days,priceType)
       if(prices.length>0){
+
         console.log("wohoh")
         setChartData({
           labels:prices.map((price)=>convertDate(price[0])),
@@ -73,17 +75,30 @@ if(id){
            setIsLoading(false)
       });
     }
+
    
 
   const handleDaysChange =async (event) => {
     setIsLoading(true)
     setDays(event.target.value);
-    const prices=await getCoinPrices(id, (event.target.value))
+    const prices=await getCoinPrices(id,event.target.value,priceType)
       if(prices.length>0){
         settinChartData(setChartData,prices);
         setIsLoading(false)
       }
   
+  };
+  
+
+  const handlPriceTypeChange =async (event, newType) => {
+     setIsLoading(true)
+    setPriceType(newType);
+     const prices=await getCoinPrices(id,days,newType)
+      if(prices.length > 0){
+        settinChartData(setChartData,prices);
+        setIsLoading(false)
+      } 
+    
   };
 
     return(
@@ -98,11 +113,15 @@ if(id){
               <List coin={coinData}/>
         </div><div className="grey-wrapper">
           <SelectDays  days={days} handleDaysChange={handleDaysChange}/>
-         <TogglePriceType/>
-          <LineChart   chartData={chartData}/>
+         <TogglePriceType
+          priceType={priceType}
+          handlPriceTypeChange={handlPriceTypeChange}
+          />
+          <LineChart   chartData={chartData}
+            priceType={priceType}/>
         </div>
 
-        <CoinInfo  
+        <CoinInfo   
         heading={coinData.name}  
         desc={coinData.desc}/>
         </>
