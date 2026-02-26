@@ -3,6 +3,7 @@ import HomePage from "./pages/home";
 import "./App.css";
 import Dashboard from "./pages/dashboard";
 import Coinpage from "./coin";
+import ComparePage from "./pages/comparePage";
 
 
 
@@ -15,6 +16,7 @@ const App=()=>{
        <Route path="/home" element={<HomePage/>}/>
        <Route path="/dashboard" element={<Dashboard/>}/>
        <Route path="/coin/:id" element={<Coinpage/>}/>
+       <Route path="/compare"  element={<ComparePage/>}/>
       </Routes>
       </BrowserRouter>
     </div>

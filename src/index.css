@@ -77,3 +77,11 @@ width: 90%;
 .grey-wrapper h2,p{
 margin: 1rem 0rem;
 }
+
+.coins-days-flex{
+  display: flex;
+  justify-content: flex-start;
+  gap: 2rem;
+  margin: 1.5rem;
+  align-items: center;
+}

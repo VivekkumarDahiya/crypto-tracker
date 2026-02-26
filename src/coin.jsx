@@ -36,45 +36,16 @@ if(id){
 },[id])
    
   async   function  getData(){
-
     const data= await getCoinData(id)
     if(data){
       coinObject(setCoinData,data)
       const prices=await getCoinPrices(id,days,priceType)
       if(prices.length>0){
-
-        console.log("wohoh")
-        setChartData({
-          labels:prices.map((price)=>convertDate(price[0])),
-          datasets:[
-            {
-        
-              data:prices.map((price)=>price[0]),
-              borderColor:"#3a80e9",
-              borderWidth:4,
-              fill:true,
-              tension:0.25,
-              backgroundColor:"rgb(58,128,233,0.1)",
-              pointRadius:0,
-              
-      
-            }
-          ]
-        })
-        setIsLoading(false)
-      }
+        setChartData(setChartData,prices)
+        setIsLoading(false)     
     }
-       axios.get(
-        `https://api.coingecko.com/api/v3/coins/${id}/market_chart?vs_currency=usd&days=${days}&interval=daily`   
-      ).then((response)=>{
-        console.log("Prices>>>>",response.data.prices)
-           setIsLoading(false)
-        
-      }).catch((error) => {
-        console.log(error);
-           setIsLoading(false)
-      });
-    }
+  }
+}
 
    
 
